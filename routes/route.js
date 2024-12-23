@@ -5,10 +5,7 @@ const route = express.Router()
 route.get("/", async (req, res) => {
     try {
         const users = await schema.find({})
-        res.status(200).json({
-            success: true,
-            message: users
-        })
+        res.status(200).json(users)
     } catch (error) {
         console.log(error);
         res.status(200).json({

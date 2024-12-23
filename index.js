@@ -1,10 +1,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 const port = process.env.PORT || 8000
 const env = require("dotenv")
 const app = express()
 const signup = require("./routes/signup")
 const routs = require("./routes/route")
+app.use(cors())
 app.use(express.json())
 app.use("/signup",signup)
 app.use("/api",routs)
