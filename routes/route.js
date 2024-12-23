@@ -18,7 +18,24 @@ route.get("/", async (req, res) => {
     }
 })
 
-
+route.delete("/:id", async(req,res)=>{
+      const {id} = req.params;
+      try {
+        const data = await schema.findByIdAndDelete({_id:id})
+        res.status(200).json({
+            success:true,
+            message:"user delete successfully"
+        })
+      } catch (error) {
+        console.log("error");
+        res.status(404).json({
+            success:false,
+            message:"internal server error"
+        })
+        
+        
+      }
+})
 
 
 
