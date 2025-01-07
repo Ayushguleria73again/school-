@@ -14,6 +14,18 @@ route.get("/", async (req, res) => {
             message: "internal server eror"
         })
     }
+}).get("/:id", async (req, res) => {
+    const {id}=req.params;
+    try {
+        const users = await schema.findOne({_id:id})
+        res.status(200).json(users)
+    } catch (error) {
+        console.log(error);
+        res.status(200).json({
+            success: false,
+            message: "internal server eror"
+        })
+    }
 }).delete("/:id", async (req, res) => {
     const { id } = req.params;
     try {
